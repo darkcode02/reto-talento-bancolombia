@@ -1,13 +1,91 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
 
-<div class="container">
+{% block content %}
+<style>
+  /* Estilo para el formulario */
+  .signup-container {
+    margin: 50px auto; /* Margen superior e inferior para centrar verticalmente */
+    max-width: 500px; /* Ancho máximo del contenedor */
+    padding: 30px; /* Espaciado interno */
+    border: 1px solid #ddd; /* Borde gris */
+    border-radius: 5px; /* Borde redondeado */
+    background-color: #f9f9f9; /* Fondo gris claro */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  }
+
+  h1 {
+    margin-bottom: 20px;
+    font-size: 36px;
+    color: #333;
+    text-align: center; /* Centra el título horizontalmente */
+  }
+
+  p {
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: #666;
+    text-align: center; /* Centra el texto horizontalmente */
+  }
+
+  form {
+    text-align: left; /* Alinea el texto del formulario a la izquierda */
+  }
+
+  .form-group {
+    margin-bottom: 20px; /* Espaciado entre los campos del formulario */
+  }
+
+  label {
+    font-weight: bold; /* Texto en negrita */
+    display: block; /* Cada etiqueta en una línea nueva */
+  }
+
+  input[type="text"],
+  input[type="password"] {
+    width: 100%; /* Ancho completo */
+    padding: 10px; /* Espaciado interno */
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 4px; /* Borde redondeado */
+    box-sizing: border-box; /* El tamaño incluye el borde y el relleno */
+  }
+
+  button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%; /* Ancho completo */
+    display: block; /* Botón en una línea nueva */
+  }
+
+  button:hover {
+    background-color: #0056b3;
+  }
+</style>
+
+<div class="signup-container">
   <h1>Signup</h1>
 
-  {{error}}
+  <p>{{error}}</p>
 
   <form action="/signup/" method="POST">
-    {% csrf_token %} {{form.as_p}}
-    <button class="btn btn-primary">Signup</button>
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="id_username">Username:</label>
+      {{ form.username }}
+    </div>
+    <div class="form-group">
+      <label for="id_password1">Password:</label>
+      {{ form.password1 }}
+    </div>
+    <div class="form-group">
+      <label for="id_password2">Password confirmation:</label>
+      {{ form.password2 }}
+    </div>
+    <button>Signup</button>
   </form>
 </div>
 {% endblock %}

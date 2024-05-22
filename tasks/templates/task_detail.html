@@ -1,8 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-{{task.title}}
+{{guion.title}}
 
 {{error}}
 
@@ -15,14 +14,14 @@
   </button>
 </form>
 
-<form action="{% url 'complete_task' task.id %}" method="POST">
+<form action="{% url 'complete_guion' guion.id %}" method="POST">
   {% csrf_token %}
   <button>
     complete
   </button>
 </form>
 
-<form action="{% url 'delete_task' task.id %}" method="POST">
+<form action="{% url 'delete_guion' guion.id %}" method="POST">
   {% csrf_token %}
   <button>
     delete

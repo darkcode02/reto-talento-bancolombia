@@ -1,7 +1,44 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+  .container {
+    margin-top: 0.3px;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 48px;
+    color: #333;
+    margin-bottom: 30px;
+  }
+
+  p {
+    font-size: 20px;
+    color: #666;
+    margin-bottom: 40px;
+  }
+
+  .cta-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 30px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .cta-button:hover {
+    background-color: #0056b3;
+  }
+</style>
 
 <div class="container">
-  <h1>Home</h1>
+  <h1>Bienvenido a nuestro sistema de gestión de guiones</h1>
+  <p>¡Transforma tus ideas en grandes historias! Registra y gestiona tus guiones para películas de forma fácil y rápida.</p>
+  <a href="/signup" class="cta-button">Comienza ahora</a>
 </div>
 
 {% endblock %}
