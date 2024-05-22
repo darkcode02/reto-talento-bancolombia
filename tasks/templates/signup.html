@@ -67,25 +67,25 @@
 </style>
 
 <div class="signup-container">
-  <h1>Signup</h1>
+  <h1>Registrarse</h1>
 
-  <p>{{error}}</p>
+  <p>{{ error }}</p>
 
   <form action="/signup/" method="POST">
     {% csrf_token %}
     <div class="form-group">
-      <label for="id_username">Username:</label>
+      <label for="id_username">Nombre de usuario:</label>
       {{ form.username }}
     </div>
     <div class="form-group">
-      <label for="id_password1">Password:</label>
+      <label for="id_password1">Contraseña:</label>
       {{ form.password1 }}
     </div>
     <div class="form-group">
-      <label for="id_password2">Password confirmation:</label>
+      <label for="id_password2">Confirmar contraseña:</label>
       {{ form.password2 }}
     </div>
-    <button>Signup</button>
+    <button>Registrarse</button>
   </form>
 </div>
 {% endblock %}

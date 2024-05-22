@@ -1,7 +1,7 @@
 from django.forms import ModelForm
-from .models import Task
+from .models import Guion
 
-class TaskForm(ModelForm):
+class GuionForm(ModelForm):
     class Meta:
-        model = Task
-        fields = ['title', 'description', 'important']
+        model = Guion
+        fields = ['title', 'description', 'important', 'actor_position']

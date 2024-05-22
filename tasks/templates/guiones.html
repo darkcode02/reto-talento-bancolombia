@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+
+<style>
+  .tasks-container {
+    margin-top: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 36px;
+    color: #333;
+  }
+
+  .card {
+    margin-bottom: 20px;
+    transition: transform 0.2s;
+  }
+
+  .card:hover {
+    transform: scale(1.02);
+  }
+
+  .card-title {
+    color: #007bff;
+    font-weight: bold;
+  }
+
+  .card-title:hover {
+    color: #0056b3;
+  }
+
+  .card-text {
+    color: #666;
+  }
+
+  .completed {
+    text-decoration: line-through;
+    color: #aaa;
+  }
+</style>
+
+<div class="tasks-container">
+  <h1>Guiones</h1>
+  {% if guiones %}
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    {% for guion in guiones %}
+    <div class="col">
+      <div class="card h-100{% if guion.datecompleted %} completed{% endif %}">
+        <div class="card-body">
+          <a href="{% url 'guion_detail' guion.id %}" class="card-title">
+            {% if guion.important %}
+            <strong>{{ guion.title }}</strong>
+            {% else %}
+            {{ guion.title }}
+            {% endif %}
+          </a>
+          <p class="card-text">{{ guion.description }}</p>
+        </div>
+        <div class="card-footer text-muted">
+          <small>
+            {% if guion.datecompleted %}
+              Completado el: {{ guion.datecompleted|date:'M j Y, H:i' }}
+            {% else %}
+              Creado el: {{ guion.created|date:'M j Y, H:i' }}
+            {% endif %}
+          </small>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="text-center">No hay guiones disponibles.</p>
+  {% endif %}
+</div>
+
+{% endblock %}
